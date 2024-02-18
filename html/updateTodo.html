@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/todo/css/update.css">
+    <title>Update Todo</title>
+</head>
+<body>
+    <section id="back">
+        <a href="/todo/html/index.html"><h2>Home</h2></a>
+        <hr>
+        <a href="/todo/html/addTodo.html"><h2>Add todo</h2></a>
+        <hr>
+        <a href="/todo/html/getOne.html"><h2>Get todo by id</h2></a>
+        <hr>
+        <a href="/todo/html/getAll.html"><h2>Get All Todos</h2></a>
+        <hr>
+        <a href="/todo/html/delete.html"><h2>Delete todo</h2></a>
+    </section>
+    <div class="container">
+        <h1 id="header">Update todo</h1>
+        <section id="addContainer">
+        <form>
+            <label for="oldId">Old Task Id:</label>
+            <input type="text" name="oldId" id="oldId" placeholder="old task id">
+            <label for="taskId">Task id:</label>
+            <input type="text" name="taskId" id="taskId" placeholder="task id">
+            <label for="task">Task:</label>
+            <input type="text" name="task" id="task" placeholder="task">
+            <label for="taskOwner">Task Owner:</label>
+            <input type="text" name="taskOwner" id="taskOwner" placeholder="task owner">
+            <label for="taskStatus">Task Status:</label>
+            <input type="text" name="taskStatus" id="taskStatus" placeholder="task status true/false:">
+            <button class="submit-btn">Add task</button>
+        </form>
+    </section>
+    </div>
+</body>
+</html>
