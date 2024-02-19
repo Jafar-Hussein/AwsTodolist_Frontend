@@ -74,10 +74,19 @@ padding: 20px;
     border-radius: 10px;
     border: none;
     font-size: 1rem;
-    margin-top: 10x;
+    margin-top: 20x;
 }
 
 .oneBtn:hover{
     background-color: #005699;
     cursor: pointer;
+}
+
+#contentContainer form input{
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #0066b2;
+    outline: none;
 }

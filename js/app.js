@@ -1,15 +1,10 @@
-const title = document.querySelector('#title-content');
-const idInput = document.querySelector('#id-input');
-const taskInput = document.querySelector('#task-input');
-const isCompletedInput = document.querySelector('#isCompleted');
-const taskOwnerInput = document.querySelector('#taskOwner');
-const addBtn = document.querySelector('#add-btn');
-const todoList = document.querySelector('#todos');
+const title = document.querySelector('#header');
+const clearBtn = document.querySelector('.clear-btn');
 
 
 // urls
-const title_url = 'http://localhost:5000/todo';
-const addTodo_url = 'http://localhost:5000/todo/add';
+const title_url = 'http://molndaltodolist-env.eba-ej3fe9gt.eu-north-1.elasticbeanstalk.com/todo';
+const clear_url = 'http://molndaltodolist-env.eba-ej3fe9gt.eu-north-1.elasticbeanstalk.com/todo/clearAll';
 
 async function getTitle(url) {
     try {
@@ -31,40 +26,19 @@ async function getTitle(url) {
     }
   }
 
-addBtn.addEventListener('click', async () => {
-    const id = idInput.value;
-    const task = taskInput.value;
-    const isCompleted = isCompletedInput.checked;
-    const taskOwner = taskOwnerInput.value;
-  
-    const data = { id, task, isCompleted, taskOwner };
-  
+getTitle(title_url);
+
+clearBtn.addEventListener('click', async () => {
     try {
-      const response = await fetch(addTodo_url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-      if (!response.ok) {
-        throw new Error('Failed to add todo');
-      }
-      const savedTodo = await response.json();
-      console.log('Todo saved:', savedTodo);
-      idInput.value = '';
-      taskInput.value = '';
-      isCompletedInput.checked = false || true;
-      taskOwnerInput.value = '';
-      // Add the new todo to the list
-      const newTodo = document.createElement('li');
-      newTodo.textContent = `${savedTodo.id}: ${savedTodo.task} - ${savedTodo.taskOwner}`;
-      todoList.appendChild(newTodo);
+        const response = await fetch(clear_url, {
+            method: 'DELETE'
+        });
+        if (!response.ok) {
+            throw new Error('Failed to clear tasks');
+        }
+        const data = await response.json();
+        console.log(data);
     } catch (error) {
-      console.error('Error adding todo:', error.message);
-      // Handle error gracefully, e.g., display a message to the user
+        console.error('Error clearing tasks:', error.message);
     }
 });
-  
-
-getTitle(title_url);
